@@ -1,7 +1,7 @@
 # Template file for 'linux5.19-intrnl'
 pkgname=linux5.19-intrnl
 version=5.19.17
-revision=2
+revision=3
 wrksrc="linux-${version%.*}"
 short_desc="Linux kernel and modules (${version%.*} series)"
 maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
@@ -15,7 +15,7 @@ skip_extraction="patch-${version}.xz"
 python_version=3
 
 # XXX Restrict archs until a proper <arch>-dotconfig is available in FILESDIR.
-archs="x86_64* i686* aarch64* ppc*"
+archs="x86_64*"
 
 nodebug=yes  # -dbg package is generated below manually
 nostrip=yes
@@ -84,7 +84,7 @@ do_configure() {
 		make ${makejobs} ARCH=$arch ${_cross} oldconfig
 	fi
 	# Always use our revision to CONFIG_LOCALVERSION to match our pkg version.
-	sed -i -e "s|^\(CONFIG_LOCALVERSION=\).*|\1\"_${revision}\"|" .config
+	sed -i -e "s|^\(CONFIG_LOCALVERSION=\).*|\1\"-intrnl_${revision}\"|" .config
 }
 
 do_build() {
