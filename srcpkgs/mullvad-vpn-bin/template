@@ -1,0 +1,33 @@
+# Template file for 'mullvad-vpn-bin'
+pkgname=mullvad-vpn-bin
+version=2022.5
+revision=4
+archs="x86_64"
+short_desc="Mullvad VPN client app for desktop"
+maintainer="intrnl <intrnl28@gmail.com>"
+hostmakedepends="tar xz"
+depends="dbus"
+license="GPL-3.0"
+homepage="https://mullvad.net"
+distfiles="https://github.com/mullvad/mullvadvpn-app/releases/download/${version}/MullvadVPN-${version}_amd64.deb"
+checksum=1b707891bfae82e918b42547dc71c8e37bb79fd1b4757e96c98500dd7fec67ea
+
+do_extract () {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/MullvadVPN-${version}_amd64.deb
+}
+
+do_install () {
+	tar xf data.tar.xz -C ${DESTDIR}
+
+	# Move zsh completions
+	mv ${DESTDIR}/usr/local/share/zsh ${DESTDIR}/usr/share
+
+	# Remove systemd units
+	rm -r ${DESTDIR}/usr/lib/systemd
+
+	# Install runit service
+	mkdir -p ${DESTDIR}/etc/sv/mullvad
+	cp ${FILESDIR}/mullvad-run.sh ${DESTDIR}/etc/sv/mullvad/run
+	chmod +x ${DESTDIR}/etc/sv/mullvad/run
+}
