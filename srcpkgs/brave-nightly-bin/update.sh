@@ -9,7 +9,7 @@ LATEST_RELEASE=$(jq '[.[] | select((.name | startswith("Nightly")) and (.assets[
 
 if [[ $LATEST_RELEASE == "null" ]]; then
 	echo 'No match.'
-  exit 1
+  exit 0
 fi
 
 LATEST_RELEASE_VERSION=$(jq -r '.tag_name[1:]' <<< "$LATEST_RELEASE")
