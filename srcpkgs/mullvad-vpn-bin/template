@@ -1,7 +1,7 @@
 # Template file for 'mullvad-vpn-bin'
 pkgname=mullvad-vpn-bin
 version=2022.5
-revision=4
+revision=5
 archs="x86_64"
 short_desc="Mullvad VPN client app for desktop"
 maintainer="intrnl <intrnl28@gmail.com>"
