@@ -20,4 +20,4 @@ LATEST_RELEASE_SHA_URL=$(jq -r '.[] | select(.name | endswith(".deb.sha256")) | 
 
 LATEST_RELEASE_SHA=$(curl -sL $LATEST_RELEASE_SHA_URL | cut -d' ' -f 1)
 
-sed -i -e "s|^\(version=\).*|\1${LATEST_RELEASE_VERSION}|" -e "s|^\(checksum=\).*|\1${LATEST_RELEASE_SHA}|" template
+sed -i -e "s|^\(version=\).*|\1${LATEST_RELEASE_VERSION}|" -e "s|^\(checksum=\).*|\1${LATEST_RELEASE_SHA}|" -e "s|^\(revision=\).*|\11|" template
