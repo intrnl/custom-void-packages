@@ -6,48 +6,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  update_brave-nightly-bin:
+  update:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Run update.sh script
-        run: (cd srcpkgs/brave-nightly-bin && ./update.sh)
-      - name: Push updated template
+      - name: Run update scripts and push
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
+          echo "update: brave-nightly-bin"
+          (cd srcpkgs/brave-nightly-bin && ./update.sh)
           git add srcpkgs/brave-nightly-bin
           git commit -m "brave-nightly-bin: update $(date --iso-8601=seconds)" || exit 0
-          git push
-  update_brave-dev-bin:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Run update.sh script
-        run: (cd srcpkgs/brave-dev-bin && ./update.sh)
-      - name: Push updated template
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
+          echo "update: brave-dev-bin"
+          (cd srcpkgs/brave-dev-bin && ./update.sh)
           git add srcpkgs/brave-dev-bin
           git commit -m "brave-dev-bin: update $(date --iso-8601=seconds)" || exit 0
-          git push
-  update_google-chrome-dev-bin:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Run update.sh script
-        run: (cd srcpkgs/google-chrome-dev-bin && ./update.sh)
-      - name: Push updated template
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
+          echo "update: google-chrome-dev-bin"
+          (cd srcpkgs/google-chrome-dev-bin && ./update.sh)
           git add srcpkgs/google-chrome-dev-bin
           git commit -m "google-chrome-dev-bin: update $(date --iso-8601=seconds)" || exit 0
+
           git push
