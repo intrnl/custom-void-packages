@@ -19,16 +19,16 @@ jobs:
           echo "update: brave-nightly-bin"
           (cd srcpkgs/brave-nightly-bin && ./update.sh)
           git add srcpkgs/brave-nightly-bin
-          git commit -m "brave-nightly-bin: update $(date --iso-8601=seconds)" || exit 0
+          git commit -m "brave-nightly-bin: update $(date --iso-8601=seconds)" || echo "Nothing to commit"
 
           echo "update: brave-dev-bin"
           (cd srcpkgs/brave-dev-bin && ./update.sh)
           git add srcpkgs/brave-dev-bin
-          git commit -m "brave-dev-bin: update $(date --iso-8601=seconds)" || exit 0
+          git commit -m "brave-dev-bin: update $(date --iso-8601=seconds)" || echo "Nothing to commit"
 
           echo "update: google-chrome-dev-bin"
           (cd srcpkgs/google-chrome-dev-bin && ./update.sh)
           git add srcpkgs/google-chrome-dev-bin
-          git commit -m "google-chrome-dev-bin: update $(date --iso-8601=seconds)" || exit 0
+          git commit -m "google-chrome-dev-bin: update $(date --iso-8601=seconds)" || echo "Nothing to commit"
 
           git push
