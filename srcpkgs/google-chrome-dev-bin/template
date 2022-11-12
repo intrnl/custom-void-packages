@@ -1,0 +1,36 @@
+# Template file for 'google-chrome-dev-bin'
+pkgname=google-chrome-dev-bin
+version=109.0.5410.0
+_revision=1
+revision=1
+archs="x86_64"
+short_desc="Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+maintainer="intrnl <intrnl28@gmail.com>"
+hostmakedepends="tar xz"
+license="Custom"
+homepage="https://google.com/chrome"
+distfiles="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_${version}-${_revision}_amd64.deb"
+checksum=40df8a8e04bc0c18f42942987e462420b53012fddd24e9ff5501f88669615052
+nostrip=yes
+
+do_extract () {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/google-chrome-unstable_${version}-${_revision}_amd64.deb
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+
+	for size in 16 24 32 48 64 128 256; do
+		# Create the icons directory
+		mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps
+
+		# Move the icons over
+		mv ${DESTDIR}/opt/google/chrome-unstable/product_logo_${size}_dev.png \
+			${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/google-chrome-unstable.png
+	done
+
+	# Remove the Debian/Ubuntu crontab
+	rm -rf ${DESTDIR}/etc
+	rm -rf ${DESTDIR}/opt/google/chrome-unstable/cron
+}
