@@ -1,7 +1,7 @@
 # Template file for 'linux6.0-intrnl'
 pkgname=linux6.0-intrnl
 version=6.0.9
-revision=1
+revision=2
 short_desc="Linux kernel and modules (${version%.*} series, intrnl)"
 maintainer="intrnl <intrnl28@gmail.com>"
 license="GPL-2.0-only"
