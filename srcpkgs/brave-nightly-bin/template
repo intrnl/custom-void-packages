@@ -1,6 +1,6 @@
 # Template file for 'brave-nightly-bin'
 pkgname=brave-nightly-bin
-version=1.47.92
+version=1.47.95
 revision=1
 archs="x86_64"
 short_desc="Secure, fast and private web browser with ad blocker"
@@ -9,7 +9,7 @@ hostmakedepends="tar xz"
 license="Mozilla Public License Version 2.0"
 homepage="https://brave.com"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser-nightly_${version}_amd64.deb"
-checksum=2670601e56242d636c802d6715b46341bff87f9a03ade64f417b905bf2612fcb
+checksum=13a01b813bf99b69bdc0b7d4d0665c71bf1909df44245e9a56aaa0dc002a64d0
 nostrip=yes
 
 do_extract () {
