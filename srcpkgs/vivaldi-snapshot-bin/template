@@ -1,0 +1,37 @@
+# Template file for 'vivaldi-snapshot-bin'
+pkgname=vivaldi-snapshot-bin
+version=5.6.2865.3
+_revision=1
+revision=1
+archs="x86_64"
+short_desc="Secure, fast and private web browser with ad blocker"
+maintainer="intrnl <intrnl28@gmail.com>"
+hostmakedepends="tar xz"
+license="Mozilla Public License Version 2.0"
+homepage="https://brave.com"
+distfiles="https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-snapshot_${version}-${_revision}_amd64.deb"
+checksum=6d9ae7e9f6a365502d8944cc017790d47dadd5cb47822226a0683fb9cfc8d3f5
+nostrip=yes
+
+do_extract () {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/vivaldi-snapshot_${version}-${_revision}_amd64.deb
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+
+	# Install the icons
+	for size in 16 22 24 32 48 64 128 256; do
+		# Create the brave browser xdg directory
+		mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps
+
+		# Copy the brave browser icon
+		mv ${DESTDIR}/opt/vivaldi-snapshot/product_logo_${size}.png \
+			${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/vivaldi-snapshot.png
+	done
+
+	# Remove the Debian/Ubuntu crontab
+	rm -rf ${DESTDIR}/etc
+	rm -rf ${DESTDIR}/opt/vivaldi-snapshot/cron
+}

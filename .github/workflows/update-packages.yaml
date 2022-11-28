@@ -31,4 +31,9 @@ jobs:
           git add srcpkgs/google-chrome-dev-bin
           git commit -m "google-chrome-dev-bin: update $(date --iso-8601=seconds)" || echo "Nothing to commit"
 
+          echo "update: vivaldi-snapshot-bin"
+          (cd srcpkgs/vivaldi-snapshot-bin && ./update.sh)
+          git add srcpkgs/vivaldi-snapshot-bin
+          git commit -m "vivaldi-snapshot-bin: update $(date --iso-8601=seconds)" || echo "Nothing to commit"
+
           git push
