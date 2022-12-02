@@ -1,6 +1,6 @@
 # Template file for 'vivaldi-snapshot-bin'
 pkgname=vivaldi-snapshot-bin
-version=5.6.2865.3
+version=5.6.2867.19
 _revision=1
 revision=1
 archs="x86_64"
@@ -10,7 +10,7 @@ hostmakedepends="tar xz"
 license="Mozilla Public License Version 2.0"
 homepage="https://brave.com"
 distfiles="https://repo.vivaldi.com/archive/deb/pool/main/vivaldi-snapshot_${version}-${_revision}_amd64.deb"
-checksum=6d9ae7e9f6a365502d8944cc017790d47dadd5cb47822226a0683fb9cfc8d3f5
+checksum=6c9c63eff68ce7629d55c72fbdc140d3b4ac4eb202c9fc37ba1075b94114ab45
 nostrip=yes
 
 do_extract () {
