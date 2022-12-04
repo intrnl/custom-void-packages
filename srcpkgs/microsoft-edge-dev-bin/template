@@ -1,0 +1,37 @@
+# Template file for 'microsoft-edge-dev-bin'
+pkgname=microsoft-edge-dev-bin
+version=109.0.1518.8
+_revision=1
+revision=1
+archs="x86_64"
+short_desc="Microsoft Edge is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+maintainer="intrnl <intrnl28@gmail.com>"
+hostmakedepends="tar xz"
+license="Custom"
+homepage="https://www.microsoft.com/en-us/edgecom"
+distfiles="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_${version}-${_revision}_amd64.deb"
+checksum=09994027a9ac06e15fb1f1c2f5e59e57550ec82663a0403bd503fd8308b109b4
+nostrip=yes
+
+do_extract () {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/microsoft-edge-dev_${version}-${_revision}_amd64.deb
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+
+	# Install the icons
+	for size in 16 24 32 48 64 128 256; do
+		# Create the brave browser xdg directory
+		mkdir -p ${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps
+
+		# Copy the brave browser icon
+		mv ${DESTDIR}/opt/microsoft/msedge-dev/product_logo_${size}_dev.png \
+			${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/microsoft-edge-dev.png
+	done
+
+	# Remove the Debian/Ubuntu crontab
+	rm -rf ${DESTDIR}/etc
+	rm -rf ${DESTDIR}/opt/microsoft/msedge-dev/cron
+}
