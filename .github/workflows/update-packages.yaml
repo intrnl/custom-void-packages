@@ -34,7 +34,7 @@ jobs:
           echo "update: microsoft-edge-dev-bin"
           (cd srcpkgs/microsoft-edge-dev-bin && ./update.sh)
           git add srcpkgs/microsoft-edge-dev-bin
-          git commit -m "microsoft-edge-dev-bin: update $(date --iso-8601=seconds" || true
+          git commit -m "microsoft-edge-dev-bin: update $(date --iso-8601=seconds)" || true
 
           echo "update: vivaldi-snapshot-bin"
           (cd srcpkgs/vivaldi-snapshot-bin && ./update.sh)
