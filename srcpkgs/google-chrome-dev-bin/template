@@ -1,6 +1,6 @@
 # Template file for 'google-chrome-dev-bin'
 pkgname=google-chrome-dev-bin
-version=111.0.5532.2
+version=111.0.5545.6
 _revision=1
 revision=1
 archs="x86_64"
@@ -10,7 +10,7 @@ hostmakedepends="tar xz"
 license="Custom"
 homepage="https://google.com/chrome"
 distfiles="https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_${version}-${_revision}_amd64.deb"
-checksum=c6f1b18fc46af5ff7b3d531efda7f387ec3034ef6f10801dab76717c44c455ca
+checksum=e5b9c5b2a53aa82fd08ee7639c7b2a4dca180508582bf1860c6ee81521207ad4
 nostrip=yes
 
 do_extract () {
