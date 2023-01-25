@@ -1,6 +1,6 @@
 # Template file for 'microsoft-edge-dev-bin'
 pkgname=microsoft-edge-dev-bin
-version=111.0.1619.2
+version=111.0.1633.0
 _revision=1
 revision=1
 archs="x86_64"
@@ -10,7 +10,7 @@ hostmakedepends="tar xz"
 license="Custom"
 homepage="https://www.microsoft.com/en-us/edgecom"
 distfiles="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_${version}-${_revision}_amd64.deb"
-checksum=6b960a265c83f90057ba3f4bc49727651dbc537f53b087b0568d26508573fbf6
+checksum=47dc23c0828473e6706d19c09c131fb4aa45533aed75cda82c84d16a116b23a0
 nostrip=yes
 
 do_extract () {
